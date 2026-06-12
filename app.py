@@ -17,7 +17,8 @@ CORS(app,
     origins=[
         "http://localhost:3000",
         "http://192.168.1.11:3000",
-        "https://streamflix-backend-49iu.onrender.com"
+        "https://streamflix-backend-49iu.onrender.com",
+        "https://streamflix-bq82.onrender.com"
     ],
     allow_headers=["Authorization", "Content-Type"],
     methods=["GET", "POST", "OPTIONS"]
@@ -177,7 +178,7 @@ def stream_tv(show_key, ep_key):
             playlist,
             mimetype="application/x-mpegURL",
             headers={
-                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Access-Control-Allow-Origin": "https://streamflix-bq82.onrender.com",
                 "Access-Control-Allow-Credentials": "true",
                 "Cache-Control": "no-cache"
             }
@@ -200,7 +201,7 @@ def stream_movie(movie_key):
             playlist,
             mimetype="application/x-mpegURL",
             headers={
-                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Access-Control-Allow-Origin": "https://streamflix-bq82.onrender.com",
                 "Access-Control-Allow-Credentials": "true",
                 "Cache-Control": "no-cache"
             }
