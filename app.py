@@ -281,8 +281,8 @@ def proxy_subtitle(playlist_key, specific_file=False):
     try:
         resp = req.get(url, timeout=10)
         response = Response(resp.content, mimetype="text/vtt")
-        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
-        response.headers["Access-Control-Allow-Credentials"] = "true"
+        origin = request.headers.get("Origin", "https://streamflix-bq82.onrender.com")
+        response.headers["Access-Control-Allow-Origin"] = origin
         response.headers["Cache-Control"] = "public, max-age=3600"
         return response
     except Exception as e:
