@@ -297,3 +297,21 @@ nav {
   pointer-events: all !important;
   z-index: 99999 !important;
 }
+
+/* TV Remote Navigation */
+*:focus {
+  outline: none;
+}
+
+.media-card:focus {
+  outline: 2px solid #E50914 !important;
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: 2px solid #E50914 !important;
+}
+
+a:focus {
+  outline: 2px solid #E50914 !important;
+}
