@@ -178,8 +178,6 @@ def stream_tv(show_key, ep_key):
             playlist,
             mimetype="application/x-mpegURL",
             headers={
-                "Access-Control-Allow-Origin": "https://streamflix-bq82.onrender.com",
-                "Access-Control-Allow-Credentials": "true",
                 "Cache-Control": "no-cache"
             }
         )
@@ -201,8 +199,6 @@ def stream_movie(movie_key):
             playlist,
             mimetype="application/x-mpegURL",
             headers={
-                "Access-Control-Allow-Origin": "https://streamflix-bq82.onrender.com",
-                "Access-Control-Allow-Credentials": "true",
                 "Cache-Control": "no-cache"
             }
         )
@@ -269,7 +265,6 @@ def save_progress(profile_id):
 def proxy_subtitle(playlist_key, specific_file=False):
     import requests as req
     from b2_service import get_subtitle_url, get_presigned_url
-
     if specific_file:
         url = get_presigned_url(playlist_key, expiry=21600)
     else:
@@ -277,12 +272,9 @@ def proxy_subtitle(playlist_key, specific_file=False):
         
     if not url:
         return Response("", status=404)
-
     try:
         resp = req.get(url, timeout=10)
         response = Response(resp.content, mimetype="text/vtt")
-        origin = request.headers.get("Origin", "https://streamflix-bq82.onrender.com")
-        response.headers["Access-Control-Allow-Origin"] = origin
         response.headers["Cache-Control"] = "public, max-age=3600"
         return response
     except Exception as e:
