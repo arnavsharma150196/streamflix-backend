@@ -14,7 +14,11 @@ app = Flask(__name__)
 
 CORS(app,
     supports_credentials=True,
-    origins=["http://localhost:3000", "http://192.168.1.11:3000"],
+    origins=[
+        "http://localhost:3000",
+        "http://192.168.1.11:3000",
+        "https://streamflix-backend-49iu.onrender.com"
+    ],
     allow_headers=["Authorization", "Content-Type"],
     methods=["GET", "POST", "OPTIONS"]
 )
